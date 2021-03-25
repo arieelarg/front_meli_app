@@ -1,3 +1,4 @@
+import { useHistory } from "react-router-dom";
 import {
   Form,
   Row,
@@ -6,14 +7,13 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+
 const Search = () => {
   const history = useHistory();
   const search = (e) => {
     e.preventDefault();
     const { searchValue } = e.target.elements;
-
-    history.push("?search=" + searchValue.value);
+    history.push(`?search=${searchValue.value}`);
   };
   return (
     <Row className="mt-5 mb-2">

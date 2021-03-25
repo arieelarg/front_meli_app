@@ -4,8 +4,8 @@ import Alerts from "../Pages/Alerts";
 const Routes = () => {
   return (
     <Router>
-      <Route path="/" component={Alerts} exact />
-      <Redirect to="/" />
+      <Route path="/home" component={Alerts} exact />
+      <Redirect to="/home" />
     </Router>
   );
 };
