@@ -1,4 +1,5 @@
 import { Table, Row, Col } from "react-bootstrap";
+import format from "date-fns/format";
 
 const List = ({ data: alerts }) => {
   return (
@@ -18,7 +19,9 @@ const List = ({ data: alerts }) => {
               ({ id, server, created_at, description, server_type }) => (
                 <tr key={id}>
                   <td>{server}</td>
-                  <td>{created_at}</td>
+                  <td>
+                    {format(new Date(created_at * 1000), "hh-mm-ss-dd-MM-yyyy")}
+                  </td>
                   <td>{description}</td>
                   <td>{server_type}</td>
                 </tr>
