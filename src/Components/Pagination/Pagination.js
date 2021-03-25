@@ -1,7 +1,7 @@
 import { Row, Col, Pagination } from "react-bootstrap";
 
-const Paginate = ({ actualPage }, totalPage) => {
-  const arr = [1, 2];
+const Paginate = ({ actualPage, totalPages }) => {
+  const arr = Array.from(Array(totalPages), (e, i) => i + 1);
   return (
     <Row>
       <Col md={6} sm={12} className="mx-auto">

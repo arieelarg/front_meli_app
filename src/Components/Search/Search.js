@@ -13,7 +13,9 @@ const Search = () => {
   const search = (e) => {
     e.preventDefault();
     const { searchValue } = e.target.elements;
-    history.push(`?search=${searchValue.value}`);
+    if (searchValue.value) {
+      history.push(`?search=${searchValue.value}`);
+    }
   };
   return (
     <Row className="mt-5 mb-2">

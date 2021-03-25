@@ -11,20 +11,19 @@ const Alerts = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchData = async (ep) => {
-    try {
-      const result = await fetch(`${base_url}${ep}`);
-      const data = await result.json();
-      setData(data);
-      setLoading(false);
-    } catch (e) {
-      setData([]);
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
     const { search } = queryString.parse(window.location.search);
+    const fetchData = async (ep) => {
+      try {
+        const result = await fetch(`${base_url}${ep}`);
+        const data = await result.json();
+        setData(data);
+        setLoading(false);
+      } catch (e) {
+        setData([]);
+        setLoading(false);
+      }
+    };
     fetchData(`/alerts${search ? `?server=` + search : ""}`);
   }, [window.location.search]);
 
@@ -36,7 +35,7 @@ const Alerts = () => {
         <Container>
           <Search />
           <List data={data} />
-          <Paginate actualPage={1} />
+          <Paginate actualPage={1} totalPages={5} />
         </Container>
       )}
     </>
