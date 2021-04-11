@@ -12,19 +12,20 @@ const Alerts = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const { search } = queryString.parse(window.location.search);
+    setLoading(true);
+    const { search, page } = queryString.parse(window.location.search);
     const fetchData = async (ep) => {
       try {
         const result = await fetch(`${base_url}${ep}`);
         const data = await result.json();
         setData(data);
-        setLoading(false);
+        // console.log(data);
       } catch (e) {
         setData([]);
-        setLoading(false);
       }
+      setLoading(false);
     };
-    fetchData(`/alerts${search ? `?server=` + search : ""}`);
+    fetchData(`/alerts?search=${search || ""}&page=${page || 1}`);
   }, [window.location.search]);
 
   return (
@@ -34,8 +35,10 @@ const Alerts = () => {
       ) : (
         <Container>
           <Search />
-          <List data={data} />
-          <Paginate actualPage={1} totalPages={5} />
+          <List data={data.alerts} />
+          {data.alerts.length > 0 && (
+            <Paginate actualPage={data} totalPages={data.total / data.limit} />
+          )}
         </Container>
       )}
     </>

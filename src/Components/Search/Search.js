@@ -1,4 +1,5 @@
 import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import {
   Form,
   Row,
@@ -7,14 +8,21 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
+import queryString from "query-string";
 
 const Search = () => {
   const history = useHistory();
+  const location = useLocation();
   const search = (e) => {
     e.preventDefault();
     const { searchValue } = e.target.elements;
     if (searchValue.value) {
-      history.push(`?search=${searchValue.value}`);
+      const { search, page } = queryString.parse(location.search);
+      history.push(
+        `?search=${searchValue.value}&page=${
+          searchValue.value === search ? page : 1
+        }`
+      );
     }
   };
   return (
