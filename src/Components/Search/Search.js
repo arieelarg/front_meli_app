@@ -27,7 +27,7 @@ const Search = () => {
   };
   return (
     <Row className="mt-5 mb-2">
-      <Col md={6} sm={12} className="mx-auto">
+      <Col md={6} sm={12} className="d-flex mx-auto">
         <Form onSubmit={search}>
           <Form.Group>
             <InputGroup className="mb-3">
@@ -38,6 +38,13 @@ const Search = () => {
                 </Button>
               </InputGroup.Append>
             </InputGroup>
+          </Form.Group>
+        </Form>
+        <Form onSubmit={""}>
+          <Form.Group>
+            <Button variant="outline-secondary" type="submit">
+              Limpiar
+            </Button>
           </Form.Group>
         </Form>
       </Col>
