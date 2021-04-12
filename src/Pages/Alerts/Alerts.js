@@ -35,7 +35,7 @@ const Alerts = () => {
         <Container>
           <Search />
           <List data={data.alerts} />
-          {data.alerts.length > 0 && (
+          {data.alerts && data.alerts.length > 0 && (
             <Paginate
               prev={data.prev}
               next={data.next}
