@@ -19,7 +19,6 @@ const Alerts = () => {
         const result = await fetch(`${base_url}${ep}`);
         const data = await result.json();
         setData(data);
-        // console.log(data);
       } catch (e) {
         setData([]);
       }
@@ -37,7 +36,11 @@ const Alerts = () => {
           <Search />
           <List data={data.alerts} />
           {data.alerts.length > 0 && (
-            <Paginate actualPage={data} totalPages={data.total / data.limit} />
+            <Paginate
+              prev={data.prev}
+              next={data.next}
+              totalPages={data.total / data.limit}
+            />
           )}
         </Container>
       )}

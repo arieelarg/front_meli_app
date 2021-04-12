@@ -31,10 +31,10 @@ const Search = () => {
         <Form onSubmit={search}>
           <Form.Group>
             <InputGroup className="mb-3">
-              <FormControl name="searchValue" placeholder="Search alert" />
+              <FormControl name="searchValue" placeholder="Buscar alertas" />
               <InputGroup.Append>
                 <Button variant="outline-secondary" type="submit">
-                  Search
+                  Buscar
                 </Button>
               </InputGroup.Append>
             </InputGroup>
